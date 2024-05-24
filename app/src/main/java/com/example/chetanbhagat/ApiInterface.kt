@@ -1,6 +1,7 @@
 package com.example.chetanbhagat
 
 import com.example.chetanbhagat.Books.BooksPojo
+import com.example.chetanbhagat.Quotes.QuotesPojo
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -12,6 +13,6 @@ interface ApiInterface {
 
 
     @GET("/v3/chetan_bhagat/text_quotes")
-    fun Quotes (): Call<BooksPojo>
+    fun Quotes (): Call<QuotesPojo>
 
 }
