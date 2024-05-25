@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chetanbhagat.Quotes.QuotesPojo
 import com.example.chetanbhagat.R
+import com.example.chetanbhagat.Videos.VideosPojoItem
 
-class QuotesAdapter(context: Context, private val QuotesPojo: QuotesPojo) :
-    RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
+class QuotesAdapter(context: Context, private val QuotesPojo: QuotesPojo) : RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         val Quotestxt : TextView = itemView.findViewById(R.id.textview)
 

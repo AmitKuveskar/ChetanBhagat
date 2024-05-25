@@ -11,12 +11,14 @@ import com.example.chetanbhagat.Books.BooksActivity
 import com.example.chetanbhagat.Images.ImagesActivity
 import com.example.chetanbhagat.MotivationalStories.MotivationalStoriesActivity
 import com.example.chetanbhagat.Quotes.QuotesActivity
+import com.example.chetanbhagat.Videos.VideosActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var BookImagebtn: CardView
     lateinit var Quotesbtn: CardView
     lateinit var Motivationalbtn: CardView
     lateinit var Imagesbtn: CardView
+    lateinit var Videobtn: CardView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         BookImagebtn = findViewById(R.id.card1)
         Quotesbtn = findViewById(R.id.card2)
+        Videobtn = findViewById(R.id.card3)
         Motivationalbtn = findViewById(R.id.card4)
         Imagesbtn = findViewById(R.id.card5)
 
@@ -51,6 +54,11 @@ class MainActivity : AppCompatActivity() {
 
         Imagesbtn.setOnClickListener {
             val intent = Intent(this@MainActivity, ImagesActivity::class.java)
+            startActivity(intent)
+        }
+
+        Videobtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, VideosActivity::class.java)
             startActivity(intent)
         }
 

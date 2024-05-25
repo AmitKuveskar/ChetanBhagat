@@ -51,18 +51,12 @@ class BookImageAdapter(private val context: Context, private var BooksPojo: Book
             val clickedBook = BooksPojo[position]
             // Extract the book_link_url
             val bookLinkUrl = clickedBook.book_link_url
-
-            // Check if bookLinkUrl is not null
             if (bookLinkUrl != null) {
-                // Create an intent to start the BooksWebViewActivity
                 val intent = Intent(holder.itemView.context, BooksActivity::class.java)
-                // Put the book_link_url as an extra
                 intent.putExtra("BookLinkUrl", bookLinkUrl)
-                // Start the activity
                 holder.itemView.context.startActivity(intent)
             } else {
-                // Handle the case where book_link_url is null (optional)
-                // For example, display a toast message or log an error
+
             }
         }
 

@@ -1,0 +1,38 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/cardview2"
+android:layout_width="330dp"
+android:layout_height="wrap_content"
+android:elevation="5dp"
+app:cardCornerRadius="10dp"
+android:layout_margin="12dp"
+android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+<TextView
+    android:id="@+id/title_text_view"
+    android:layout_width="match_parent"
+    android:text="Title"
+    android:textColor="@color/black"
+    android:textAlignment="center"
+    android:textSize="18dp"
+    android:textStyle="bold|italic"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content"/>
+
+<com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+    android:id="@+id/youtube_player_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:videoId="S0Q4gqBUs7c"
+    app:autoPlay="true" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
