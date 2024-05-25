@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 
 import com.bumptech.glide.Glide
+import com.example.chetanbhagat.Books.BooksActivity
 import com.example.chetanbhagat.Books.BooksPojo
 import com.example.chetanbhagat.R
 
 
-class ImageAdapter(private val context: Context, private var BooksPojo: BooksPojo, private val viewPager2: ViewPager2) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class BookImageAdapter(private val context: Context, private var BooksPojo: BooksPojo, private val viewPager2: ViewPager2) : RecyclerView.Adapter<BookImageAdapter.ViewHolder>() {
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         val BooksImage : ImageView = itemView.findViewById(R.id.imageView)
 
@@ -35,16 +36,35 @@ class ImageAdapter(private val context: Context, private var BooksPojo: BooksPoj
             .load(Books.book_link_image) // Load image from URL
             .into(holder.BooksImage) // Set image into ImageView
 
+//        holder.BooksImage.setOnClickListener {
+//            // Get the corresponding BooksPojoItem
+//            val clickedBook = BooksPojo[position]
+//            // Extract the book_link_url
+//            val bookLinkUrl = clickedBook.book_link_url
+//            // Open the book_link_url in a browser
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(bookLinkUrl))
+//            context.startActivity(intent)
+//        } //for implicit  intent
+
         holder.BooksImage.setOnClickListener {
             // Get the corresponding BooksPojoItem
             val clickedBook = BooksPojo[position]
             // Extract the book_link_url
             val bookLinkUrl = clickedBook.book_link_url
-            // Open the book_link_url in a browser
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(bookLinkUrl))
-            context.startActivity(intent)
-        }
 
+            // Check if bookLinkUrl is not null
+            if (bookLinkUrl != null) {
+                // Create an intent to start the BooksWebViewActivity
+                val intent = Intent(holder.itemView.context, BooksActivity::class.java)
+                // Put the book_link_url as an extra
+                intent.putExtra("BookLinkUrl", bookLinkUrl)
+                // Start the activity
+                holder.itemView.context.startActivity(intent)
+            } else {
+                // Handle the case where book_link_url is null (optional)
+                // For example, display a toast message or log an error
+            }
+        }
 
 
 

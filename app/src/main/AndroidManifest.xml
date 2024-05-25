@@ -21,6 +21,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Videos.VideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Images.ImagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MotivationalStories.MotivationalStoriesActivity"
+            android:exported="false" />
+        <activity
             android:name=".Quotes.QuotesActivity"
             android:exported="false" />
         <activity

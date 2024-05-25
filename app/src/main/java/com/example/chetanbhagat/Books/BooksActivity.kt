@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -16,7 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.chetanbhagat.MainActivity
 import com.example.chetanbhagat.R
 import com.example.chetanbhagat.RetrofitInstance
-import com.example.chetanbhagat.adapter.ImageAdapter
+import com.example.chetanbhagat.adapter.BookImageAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +27,9 @@ import java.util.ArrayList
 class BooksActivity : AppCompatActivity() {
     lateinit var viewPager2: ViewPager2
     private lateinit var handler: Handler
-    private lateinit var adapter: ImageAdapter
+    private lateinit var adapter: BookImageAdapter
     lateinit var Backbtn : ImageView
+    lateinit var WebView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,8 @@ class BooksActivity : AppCompatActivity() {
             insets
         }
 
+        WebView = findViewById(R.id.webview)
+
         viewPager2 = findViewById(R.id.viewPager2)
         Backbtn = findViewById(R.id.backicon)
 
@@ -45,6 +50,18 @@ class BooksActivity : AppCompatActivity() {
             val  intent = Intent(this@BooksActivity, MainActivity::class.java)
             startActivity(intent)
         }
+
+        // Retrieve the book_link_url from the intent extra
+        val bookLinkUrl = intent.getStringExtra("BookLinkUrl")
+
+        // Configure the WebView
+        WebView.settings.javaScriptEnabled = true
+        WebView.webViewClient = WebViewClient()
+        // Load the URL into the WebView
+        if (bookLinkUrl != null) {
+            WebView.loadUrl(bookLinkUrl)
+        }
+
 
         init()
         setUpTransformer()
@@ -70,7 +87,7 @@ class BooksActivity : AppCompatActivity() {
                     }
 
                     // Initialize and set the adapter with the fetched image URLs
-                    adapter = ImageAdapter(this@BooksActivity, booksPojo,viewPager2)
+                    adapter = BookImageAdapter(this@BooksActivity, booksPojo,viewPager2)
                     viewPager2.adapter = adapter
                 } else {
                     // Handle API error
@@ -93,4 +110,7 @@ class BooksActivity : AppCompatActivity() {
         // Set the initial page for `ViewPager2`
         viewPager2.setCurrentItem(3, true)
     }
+
+
+
 }
